@@ -118,7 +118,7 @@ a:hover {
         overflow: hidden;
     }
     .content {
-        width: 100%;
+        width: 90%;
     }
     .header-left {
         line-height: 50px;
@@ -206,7 +206,7 @@ a:hover {
 
 .skill-1 {
     animation: skill-1-animatian 2s;
-    width: 980px;
+    width: 100%;
 }
 
 @keyframes skill-1-animatian {
@@ -214,13 +214,13 @@ a:hover {
         width: 0px;
     }
     to {
-        width: 980px;
+        width: 100%;
     }
 }
 
 .skill-2 {
     animation: skill-2-animatian 2s;
-    width: 880px;
+    width: 90%;
 }
 
 @keyframes skill-2-animatian {
@@ -228,13 +228,13 @@ a:hover {
         width: 0px;
     }
     to {
-        width: 880px;
+        width: 90%;
     }
 }
 
 .skill-3 {
     animation: skill-3-animatian 2s;
-    width: 800px;
+    width: 80%;
 }
 
 @keyframes skill-3-animatian {
@@ -242,13 +242,13 @@ a:hover {
         width: 0px;
     }
     to {
-        width: 800px;
+        width: 80%;
     }
 }
 
 .skill-4 {
     animation: skill-4-animatian 2s;
-    width: 480px;
+    width: 50%;
 }
 
 @keyframes skill-4-animatian {
@@ -256,13 +256,13 @@ a:hover {
         width: 0px;
     }
     to {
-        width: 480px;
+        width: 50%;
     }
 }
 
 .skill-5 {
     animation: skill-5-animatian 2s;
-    width: 680px;
+    width: 75%;
 }
 
 @keyframes skill-5-animatian {
@@ -270,13 +270,13 @@ a:hover {
         width: 0px;
     }
     to {
-        width: 680px;
+        width: 75%;
     }
 }
 
 .skill-6 {
     animation: skill-6-animatian 2s;
-    width: 660px;
+    width: 70%;
 }
 
 @keyframes skill-6-animatian {
@@ -284,7 +284,7 @@ a:hover {
         width: 0px;
     }
     to {
-        width: 660px;
+        width: 70%;
     }
 }
 
@@ -384,7 +384,26 @@ a:hover {
     background-color: rgb(245, 245, 245);
 }
 
+
+/* 底部 */
+
 .footer {
     border-top: #ccc 1px solid;
-    /* height: 100px; */
+    height: 80px;
+}
+
+.footer .content {
+    position: relative;
+}
+
+.footer img {
+    width: 60px;
+    height: 60px;
+    margin: 10px;
+}
+
+.footer p {
+    position: absolute;
+    top: 25px;
+    left: 80px;
 }
