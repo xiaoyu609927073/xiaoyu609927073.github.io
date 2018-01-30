@@ -10,7 +10,9 @@ $(function() {
                     $(this).children('.skill-li-div').fadeOut(10);
                 });
         };
-    }
+    } else {
+        $('.footer-tips').css('display', 'none');
+    };
 
 
 })
