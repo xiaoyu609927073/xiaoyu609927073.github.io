@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>医路畅行</title>
+    <link rel="shortcut icon" href="./res/favicon.png">
+    <link rel="stylesheet" href="./res/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="./res/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="./res/vue.js"></script>
+    <style>
+       @font-face
+        {
+            font-family: myFirstFont;
+            /* src: url('./res/2.TTF'); */
+            src: url('./res/1.woff');
+        }
+        
+        *{
+            font-family:myFirstFont!important;
+            color:#000;
+        }
+        .list-group{
+            margin: 0;
+        }
+        a.list-group-item, button.list-group-item{
+            color: #000;
+        }
+        .hoverthis{
+            color:#000;
+            text-align: center;
+            font-size: 20px;
+            height: 42px;
+            margin: 0;
+            padding: 0;
+            line-height: 42px;
+        }
+        .hoverthis:hover{
+            background: #3488c8!important;
+            color: #fff!important;
+        }
+        .topbg{
+          
+            width: 100%;
+        }
+        .topbgheader{
+            background: url('./res/top.jpg') no-repeat center center;
+            width: 100%;
+            height: 100px;
+        }
+        .topbgfooter{
+            background: url('./res/header.jpg') no-repeat center center;
+            width: 100%;
+            height: 505px;
+        }
+        .app,.imgBox{
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .imgBox{
+            height: 100px;
+        }
+        .imgBox .imgLogo1{
+           float: left;
+           width: 260px;
+           margin-top: 15px;
+        }
+        .imgBox .imgLogo2{
+           float: right;
+           width: 240px;
+           margin-top: 26px;
+        }
+        .imgBox .imgLogo3{
+           float: right;
+           width: 176px;
+           margin-top: 26px;
+           margin-right: 20px;
+        }
+
+         .topheader{
+            height: 505px;
+            max-width: 1400px;
+        }
+        
+     
+  
+        .leftWordHeader img{
+            margin-top: 160px;
+        }
+        .rightHeader{
+            height: 505px;
+            position: relative;
+        }
+        .rightHeader .contact{
+            position: absolute;
+            right: 0;
+            top: 62px;
+            width: 330px;
+            height: 380px;
+            background: rgba(256,256,256,0.3);
+        }
+        .telDiv,.wxDiv{
+            height: 180px;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            align-items: center
+        }
+        .telDiv h3{
+            margin-top: 10px;
+        }
+        .telDiv p{
+            z-index: 100;
+            font-size: 24px;
+            margin-bottom: 0px;
+        }
+        .line{
+            width: 260px;
+            border-bottom: 1px dashed #000;
+            margin: 6px auto;
+        }
+        .wxDiv{
+            height: 120px;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            align-items: center
+        }
+        .wxDiv h5{
+            font-weight: bold;
+            margin-bottom: 0;
+        }
+        .wxDiv img{
+            margin-top: 10px;
+            width: 120px;
+            /* border: 1px solid #fff; */
+        }
+        .ins{
+            margin-top: 54px;
+            border-top: 1px solid #a0a0a0;
+            position: relative;
+        }
+        .ins h3{
+            position: absolute;
+            display: block;
+            padding: 5px 38px;
+            background: #fff;
+            top:-48px;
+            left: 50%;
+            font-size: 36px;
+            margin-left: -108px;
+        }
+        
+        .ins p{
+            padding: 120px 90px 50px;
+            font-size: 28px;
+            text-indent:2em;
+        }
+        .items{
+            margin-top: 54px;
+            border-top: 1px solid #a0a0a0;
+            position: relative;
+            padding: 50px 0;
+        }
+         .items h3{
+            position: absolute;
+            display: block;
+            padding: 5px 38px;
+            background: #fff;
+            top:-48px;
+            left: 50%;
+            font-size: 36px ;
+            margin-left: -144px;
+        }
+        .itemsBox{
+            border: 1px solid #d5d5d5;
+            border-radius: 4px;
+        }
+        .contentThis{
+            width: 90%;
+            margin: 0 auto;
+        }
+        .contentThis h4{
+            width: 100%;
+            text-align: center;
+            height: 66px;
+            line-height: 66px;
+            font-size: 30px;
+            margin: 0;
+        }
+        .contentThis img{
+            width: 100%;
+        }
+        .contentThis p{
+            font-size: 24px;
+            text-indent:2em;
+            margin: 60px 0;
+        }
+        .list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover{
+            background-color: #d5d5d5;
+            border-color: #d5d5d5;
+            color: #000;
+            font-size: 24px;
+            margin: 0;
+            padding: 0;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+        }
+        .lastFooter{
+            background: #383838;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .lastFooter p{
+            color: #fff;
+            margin-bottom: 0;
+        }
+        @media screen and (max-width: 992px) {
+            
+           .imgBox{
+                height: 12vw;
+                width: 90%;
+                margin: 0 auto;
+            }
+            .imgBox .imgLogo1{
+            width: 27.5vw;
+            margin-top:2vw;
+            }
+            .imgBox .imgLogo2{
+            width: 20vw;
+            margin-top: 3vw;
+            }
+            .imgBox .imgLogo3{
+            width: 18vw;
+            margin-top: 3vw;
+            margin-right: 3vw;
+            }
+            .topbgfooter{
+                background: url('./res/phoneheader.jpg');
+                background-size:100%;
+                height: 50vw;
+            }
+            .rightHeader{
+                /* display: flex;
+                align-items: center;
+                justify-content: flex-end; */
+                height: 50vw;
+                position: relative;
+            }
+           
+            .rightHeader .contact{
+                transform: scale(0.8);
+                position: absolute;
+                right: 0;
+                top: calc( 25vw - 190px )
+            }
+            .app{
+                width: 80%;
+                margin: 0 auto;
+            }
+            .ins{
+                margin-top: calc( 96vw / 14 );
+                border-top: 1px solid #a0a0a0;
+                position: relative;
+            }
+            .ins h3{
+                position: absolute;
+                display: block;
+                padding: 0 calc( 38vw / 14 );
+                background: #fff;
+                top: 0;
+                left: 50%;
+                font-size: calc( 36vw / 14 );
+                line-height: calc( 36vw / 14 );
+                margin-left: calc( -180vw / 14 );
+                margin-top: calc( -18vw / 14 );
+            }
+            
+            .ins p{
+                padding: calc( 120vw / 14 ) 0 calc( 50vw / 14 );
+                font-size: calc( 28vw / 14 );
+                text-indent:2em;
+            }
+            .items{
+                margin-top: calc( 96vw / 14 );
+                border-top: 1px solid #a0a0a0;
+                position: relative;
+                padding: calc( 50vw / 14 ) 0;
+            }
+            .items h3{
+                position: absolute;
+                display: block;
+                padding: 0 calc( 38vw / 14 );
+                line-height: calc( 36vw / 14 );
+                background: #fff;
+                top: 0;
+                left: 50%;
+                font-size: calc( 36vw / 14 );
+                margin-left: calc( -214vw / 14 );
+                margin-top: calc( -18vw / 14 );
+            }
+            .xsLiH5Hover{
+                background: #3488c8!important;
+                color: #fff;
+            }
+            .lastFooter{
+                background: #383838;
+                height: calc( 200vw / 14 );
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+            }
+            .lastFooter p{
+                color: #fff;
+                font-size: 0.5em;
+                margin-bottom: 0;
+            }
+            
+        }
+        @media screen and (max-width: 700px) {
+            .rightHeader .contact{
+                transform: scale(0.6);
+                position: absolute;
+                right: 0;
+                top: calc( 25vw - 190px );
+                margin-right: -30px;
+            }
+        }
+        @media screen and (max-width: 550px) {
+            .rightHeader .contact{
+                transform: scale(0.4);
+                position: absolute;
+                right: 0;
+                top: calc( 25vw - 190px );
+                margin-right: -60px;
+            }
+        }
+        @media screen and (max-width: 400px) {
+            .rightHeader .contact{
+                transform: scale(0.3);
+                position: absolute;
+                right: 0;
+                top: calc( 25vw - 190px );
+                margin-right: -80px;
+            }
+        }
+        .itemsBoxXs .xsUl{
+            list-style: none;
+        }
+        .xsUl{
+            padding: 0;
+            margin-top: 3vw;
+        }
+        .xsUl li{
+            display: block;
+        }
+        .xsClassification{
+            background: #d5d5d5;
+            height: calc( 110vw / 14 ) ;
+            line-height: calc( 110vw / 14 ) ;
+            width: 100%;
+            text-align: center;
+            font-size: calc( 28vw / 14 );
+        }
+        .xsLi h5{
+            background: #fff;
+            height: calc( 110vw / 14 ) ;
+            line-height: calc( 110vw / 14 ) ;
+            width: 100%;
+            text-align: center;
+            font-size: calc( 28vw / 14 );
+            border-bottom: 1px solid #d3d3d3;
+            margin: 0;
+        }
+        .xsLiH5Hover{
+            background: #3488c8!important;
+            color: #fff;
+        }
+        .liDiv{
+            /* display: none; */
+            border: 1px solid #d3d3d3;
+            border-top: 0px solid #f8f8f8;
+            padding: 10px;
+            box-sizing: border-box;
+            background: #f8f8f8;
+        }
+        .liDiv img{
+            width: 100%;
+        }
+        .liDiv p{
+            font-size: calc( 24vw / 14 );
+            text-indent:2em;
+            margin: calc( 60vw / 14 ) 0;
+        }
+        [v-cloak] {
+
+            display: none;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="topbg">
+        <div class="imgBox">
+                <img class="imgLogo1" src="./res/logo.png" alt="">
+                <img class="imgLogo2" src="./res/u8.png" alt="">
+                <img class="imgLogo3" src="./res/u6.png" alt="">
+        </div>
+        <div class="topbgfooter">
+            <div class="container-fluid topheader">
+                <div class="row">
+                    <div class="col-xs-6 leftWordHeader ">
+                        <img class="hidden-xs hidden-sm" src="./res/word.png" alt="">
+                    </div>
+                    <div class="col-xs-6 rightHeader">
+                        <div class="contact">
+                            <div class="telDiv">
+                                <h3><span style="font-weight: bold">急速就医</span> 客服电话</h3>
+                                <p>010-8577-8519</p>
+                                <p>010-8577-8529</p>
+                                <p>010-8577-8581</p>
+                                <p>188-0000-0819</p>
+                            </div>
+                            <div class="line"></div>
+                            <div class="wxDiv">
+                                <h5>更多就医指导</h5>
+                                <h5>请关注微信公众号二维码</h5>
+                                <img  src="./res/wx.jpg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <div class="app">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12 ins">
+                    <h3>医路畅行<span style="color:#64afeb">简介</span></h3>
+                    <p v-text='ins' class="insText"></p>
+                </div>
+                <div class="col-xs-12 items">
+                    <h3>北京三甲医院<span style="color:#64afeb">简介</span></h3>
+                    <div class="container-fluid">
+                        <div class="row itemsBox hidden-xs hidden-sm">
+                            <div class="list-group col-md-3 col-xs-12" v-cloak>
+                                <a href="javascript:;" class="list-group-item disabled active">
+                                    综合医院
+                                </a>
+                                <a href="javascript:;" class="list-group-item hoverthis"  v-for="(item,index) in listOne.slice(0,8)" @mouseover='changeItem(item)'>{{item.name}}</a>
+                                <a href="javascript:;" class="list-group-item disabled active">
+                                    专科医院
+                                </a>
+                                <a href="javascript:;" class="list-group-item hoverthis"  v-for="(item,index) in listOne.slice(8,14)" @mouseover='changeItem(item)'>{{item.name}}</a>
+                                <a href="javascript:;" class="list-group-item disabled active">
+                                    中医类医院
+                                </a>
+                                <a href="javascript:;" class="list-group-item hoverthis"  v-for="(item,index) in listOne.slice(14,16)" @mouseover='changeItem(item)'>{{item.name}}</a>
+                               
+                            </div>
+                            <div class="col-md-9">
+                                <div class="contentThis">
+                                    <h4>{{itemThis.name}}</h4>
+                                    <img :src="itemThis.imgSrc" alt="">
+                                    <p v-text="itemThis.value"></p>
+                                    <p>重点科室</p>
+                                    <p style="color:#64afeb" v-text="itemThis.department"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row itemsBoxXs hidden-md hidden-lg">
+                            <ul class="xsUl" v-cloak>
+                                <li class="xsClassification">综合医院</li>
+                                <li class="xsLi" v-for="(item,index) in listOne.slice(0,8)">
+                                    <h5 @click="tapthis(item)" :class="{xsLiH5Hover:item.isshow}">{{item.name}}</h5>
+                                    <div class="liDiv" v-if="item.isshow">
+                                        <img :src="item.imgSrc" alt="">
+                                        <p v-text="item.value"></p>
+                                        <p>重点科室</p>
+                                        <p style="color:#64afeb" v-text="item.department"></p>
+                                    </div>
+                                    
+                                </li>
+                                <li class="xsClassification">专科医院</li>
+                                <li class="xsLi" v-for="(item,index) in listOne.slice(8,14)">
+                                    <h5 @click="tapthis(item)" :class="{xsLiH5Hover:item.isshow}">{{item.name}}</h5>
+                                    <div class="liDiv" v-if="item.isshow">
+                                        <img :src="item.imgSrc" alt="">
+                                        <p v-text="item.value"></p>
+                                        <p>重点科室</p>
+                                        <p style="color:#64afeb" v-text="item.department"></p>
+                                    </div>
+                                    
+                                </li>
+                                <li class="xsClassification">中医类医院</li>
+                                <li class="xsLi" v-for="(item,index) in listOne.slice(14,16)">
+                                    <h5 @click="tapthis(item)" :class="{xsLiH5Hover:item.isshow}">{{item.name}}</h5>
+                                    <div class="liDiv" v-if="item.isshow">
+                                        <img :src="item.imgSrc" alt="">
+                                        <p v-text="item.value"></p>
+                                        <p>重点科室</p>
+                                        <p style="color:#64afeb" v-text="item.department"></p>
+                                    </div>
+                                    
+                                </li>
+                            </ul>
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="lastFooter hidden-xs hidden-sm">
+        <p>版权所有：  汇得（北京）医疗管理咨询有限公司</p>
+    </div>
+    <div class="lastFooter hidden-md hidden-lg">
+        <p>版权信息</p>
+        <p>汇得（北京）医疗管理咨询有限公司</p>
+    </div>
+    <script>
+        $(function () {
+            $('[data-toggle="popover"]').popover()
+        })
+        var vm = new Vue({
+            el:'.app',
+            data:{
+                ins:'“医路畅行”是汇得医疗咨询服务有限公司成立的专业从事北京范围内就医指导的医疗服务咨询机构，由北京红十字基金会设立，受北京市医师协会指导，以北京三甲医院、医生资源为标准，为广大患者解决来京就医的咨询及指导的强烈诉求。服务内容主要包括：免费预约挂号、专业体检定制，科学就医指导、专家门诊预约、就医陪诊陪护、住院手术辅助管理。',
+                listOne:[
+                    {name:'协和医院',value:'北京协和医院位于北京市东城区，是集医疗、科研、教学为一体的大型综合医院。隶属于中国协和医科大学，是其临床医学院，同时也是中国医学科学院的临床医学研究所，中华人民共和国卫生部指定的诊治疑难重症的技术指导中心之一。北京协和医院在中国乃至世界皆享有盛名，是中国最早承担外宾医疗任务的单位，医院专门设立外宾和高干门诊部，开设专门的高干、外宾、特需病区，也是首批肿瘤多学科诊疗试点医院。',department:'重症医学科、风湿免疫科、基本外科、乳腺外科、妇产科、皮肤科、超声诊断科、病理科、放射科、呼吸科、肿瘤内科', imgSrc: './res/pic/1.png',isshow:false,index:0},
+                    { name: '301医院', value: '中国人民解放军总医院（301医院）创建于1953年，是集医疗、保健、教学、科研于一体的大型现代化综合性医院。医院是中央重要保健基地，承担军委、总部等多个体系单位、官兵的医疗保健和各军区、军兵种转诊、后送的疑难病诊治任务。医院同时又是解放军医学院，以研究生教育为主，是全军唯一一所医院办学单位。',department:'肝胆外科、骨科、耳鼻喉、头颈外科、泌尿外科、内分泌科、消化内科、肾病科' , imgSrc: './res/pic/2.jpg', isshow: false, index: 1},
+                    { name: '北医三院', value: '北京大学第三医院（简称“北医三院”）始建于1958年，是国家卫生健康委委管的集医疗、教学、科研和预防保健为一体的现代化综合性三级甲等医院。北医三院拥有国内最强的脊柱外科和目前世界规模最大、治疗方法最全面的生殖医学中心之一。中国大陆首例试管婴儿在此诞生。运动医学研究所是中国最早成立、国内唯一的中国奥委会指定运动员伤病防治中心。眼科在眼外伤及眼科疑难重症的诊治方面处于国内领先水平；消化科在溃疡病发病机制研究及治疗、早期胃癌的诊疗等领域居国内前列；心血管内科在冠心病介入治疗、急性心肌梗死“绿色通道”及临床与基础协调发展等方面居国内一流水平。',department:'骨科（运动医学）、生殖内分泌科、泌尿外、男性学' , imgSrc: './res/pic/3.jpg', isshow: false, index: 2},
+                    { name: '朝阳医院', value: '首都医科大学附属北京朝阳医院有两个院区，本部位于北京市朝阳区工体南路8号，始建于1958年2月24日，是一所集医疗、教学、科研、预防为一体的三级甲等综合性医院，是北京市医保和新农合定点医院。医院设有心脏中心、呼吸科、内分泌科、肾内科、血液科、风湿免疫、神经内科、消化内科、综合科、高压氧科、感染科、肿瘤科、职业病与中毒医学科、普外科等。',department:'呼吸科', imgSrc: './res/pic/4.jpg' , isshow: false, index: 3},
+                    { name: '天坛医院', value: '首都医科大学附属北京天坛医院始建于1956年8月23日，是一所以神经外科为先导，以神经科学集群为特色，集医疗、教学、科研、预防为一体的三级甲等综合性医院，是北京市医保定点医院。医院设有神经外科（小儿病区、癫痫外科病区、功能神经外科病区、脊髓脊柱病区、颅脑创伤病区、脑血管病一病区、脑血管病二病区、肿瘤病区、神经肿瘤综合治疗病区、周围神经外科病区、国际医疗部综合医疗病区）、呼吸内科、消化内科、心内科、内分泌科、肾内科、血液内科、感染科、心外科、普外科、泌尿外科、骨外科、乳腺外科等。',department:'神经外科、功能外科（癫痫）、神经内科、神经放射科' , imgSrc: './res/pic/5.jpg', isshow: false, index: 4},
+                    { name: '中日友好医院', value: '中日友好医院是中华人民共和国国家卫生和计划生育委员会直属医院，于1984年开院。现编制床位1700张（含北区、西区），集医疗、教学、科研、康复和预防保健等多项功能为一体，并承担中央保健医疗康复任务、国家卫生应急救援队任务，同时还是国家卫生计生委远程医疗管理与培训中心。医院实行365天无假日门诊，是北京市A 类定点医疗机构。',department:'肝胆外科、肾病科，呼吸科', imgSrc: './res/pic/6.jpg', isshow: false , index: 5},
+                    { name: '友谊医院', value: '首都医科大学附属北京友谊医院始建于1952年，原名为北京苏联红十字医院，是新中国成立后，在苏联政府和苏联红十字会援助下，由党和政府建立的第一所大型医院。毛泽东主席特别题词“减少人民的疾病，提高人民的健康水平”。目前，首都医科大学附属北京友谊医院是集医疗、教学、科研、预防和保健为一体的北京市属三级甲等综合医院，是首都医科大学第二临床医学院。医院设有西城院区和通州院区，其中通州院区位于北京城市副中心。',department:'消化内科、耳鼻喉头颈外科、热带病', imgSrc: './res/pic/7.jpg', isshow: false, index: 6 },
+                    { name: '北大肿瘤医院', value: '北京大学肿瘤医院（北京肿瘤医院、北京大学临床肿瘤学院、北京市肿瘤防治研究所）始建于1976年，是集医、教、研、防于一体的大型现代化三级甲等肿瘤专科医院。是国家肿瘤学重点学科，国家临床重点学科建设项目，肿瘤科、病理科国家临床重点专科建设项目单位；在多种中国常见肿瘤诊治方面居国内领先、国际先进水平；拥有教育部、北京市“恶性肿瘤发病机制及转化研究”重点实验室；是北京抗癌协会、北京癌症康复会的挂靠和依托单位。致力于乳腺癌、胃癌、肺癌、结直肠癌、肝癌、食管癌、恶性淋巴瘤、妇科肿瘤、头颈部肿瘤、骨肿瘤以及恶性黑色素瘤等各种肿瘤的诊断和综合治疗。',department:'肿瘤非手术治疗科，胸外科' , imgSrc: './res/pic/8.jpg', isshow: false, index: 7},
+                    { name: '宣武医院', value: '首都医科大学宣武医院创建于1958年，是一所以神经科学和老年医学的临床与研究为重点，以治疗心脑血管疾患为特色，承担医疗、教育、科研、预防、保健和康复任务的大型三级甲等综合医院。是新中国神经科学的初创基地和培育神经科学人才的摇篮之一,在国内有着重要学术地位。受国家卫生部委托，医院承办全国神经内科医师进修班、神经外科医师进修班、神经放射医师进修班，是国家级继续医学教育培训基地。' , department: '神经内科', imgSrc: './res/pic/9.jpg', isshow: false, index: 8},
+                    { name: '同仁医院', value: '首都医科大学附属北京同仁医院有3个院区，分别位于北京市东城区东交民巷1号、崇文门内大街8号、经济技术开发区西环南路2号，始建于1886年，是一所以眼科学、耳鼻咽喉科学为国家重点学科的三级综合医院，是北京市医保定点医院。' , department: '眼科全类别', imgSrc: './res/pic/10.jpg', isshow: false, index: 9},
+                    { name: '阜外医院', value: '中国医学科学院阜外心血管病医院（以下简称阜外医院），始建于1956年，是国内一家三级甲等心血管病专科医院，也是心血管疾病国家重点实验室、国家心血管疾病临床医学研究中心所在地，以诊治各种复杂、疑难和重症心血管疾病而享誉国内外，已成为世界上最大的心血管疾病诊治中心和集医疗、科研、预防和人才培养于一体的国家级医学研究与教育中心。', department: '心脏科' , imgSrc: './res/pic/11.jpg', isshow: false, index: 10},
+                    { name: '积水潭医院', value: '北京积水潭医院有2个院区，分别位于北京市西城区新街口东街31号，北京市昌平区回龙观回南北路68号，始建于1956年1月28日，是一所综合医院。北京积水潭医院以显著的医疗特色和医、教、研、防综合实力成为北京大学第四临床医学院。其脊柱外科、创伤骨科、矫形骨科、手外科、小儿骨科、骨肿瘤科、运动医学科和烧伤科的医疗技术达到世界及国内领先水平。医院设有北京市创伤骨科研究所、北京市烧伤研究所、北京市手外科研究所、北京创伤烧伤抢救中心、北京市骨科疾病研究治疗中心。北京市医保定点医院。', department: '骨科全类别', imgSrc: './res/pic/12.jpg', isshow: false, index: 11},
+                    { name: '儿童医院', value: '首都医科大学附属北京儿童医院是集医疗、科研、教学、保健于一体的三级甲等综合性儿科医院。年门诊量300余万人次，住院病人7万余人次，手术逾2.3万例。2017年，国家卫生计生委批准北京儿童医院成为国家儿童医学中心(北京)。北京儿童医院设备先进、设施完善、技术力量雄厚，科室齐全，设有呼吸科、泌尿外科、重症医学科、血液肿瘤中心等44个临床和医技科室。', department: '儿科综合', imgSrc: './res/pic/13.jpg', isshow: false, index: 12},
+                    { name: '儿研所', value: '首都儿科研究所是一所以医学基础研究、儿科疾病发病机理研究、儿童保健为重点，承担有医疗、教学和预防任务的应用医学研究机构。研究所先后10次获得北京市属科研院所“改革与发展”一等奖，18次获得首都及卫生系统“文明单位”的称号。50多年来，经过几代人的不懈奋斗，研究所已发展成为集儿科基础医学、临床医学、高等医学教育、预防保健医学为一体的全国知名的医学研究机构。' , department: '儿科综合', imgSrc: './res/pic/14.jpg', isshow: false, index: 13},
+                    { name: '广安门中医院', value: '中国中医科学院广安门医院(暨中国中医科学院第二临床医药研究所)始建于1955年，是国家中医药管理局直属的集医疗、教学、科研和预防保健为一体的三级甲等中医医院，是中央干部保健基地，全国“示范中医医院”，北京市医疗保险A类定点医院，国家中医药管理局批准的全国中医肿瘤医疗中心，全国中医尿病专病及中医肛肠病专病中心，中医急诊基地建设单位，国家中医药管理局中医药重点学科（中医肿瘤病学、中医内分泌病学、中医肛肠病学、中医心病学、中医心理学、中医痹病学）及肿瘤扶正培本重点研究室建设单位。' , department: '中医全科', imgSrc: './res/pic/15.jpg', isshow: false, index: 14},
+                    { name: '北京中医院', value: '北京中医医院始建于1956年，是北京市唯一的一所市属综合性、现代化三级甲等中医医院。承担着北京市中医医疗、教学、科研、预防等任务。医院下设北京市中医研究所、北京市中药研究所、北京市中医国际交流培训中心、北京市赵炳南皮肤病研究中心等。是首都医科大学中医药临床医学院、北京中医药大学教学医院、北京市中医住院医师（全科医生）规范化培训基地。北京市基本医疗保险A类定点医疗机构。'  , department: '中医全科', imgSrc: './res/pic/16.jpg', isshow: false, index: 15},
+                ],
+                itemThis: { name: '协和医院', value: '北京协和医院位于北京市东城区，是集医疗、科研、教学为一体的大型综合医院。隶属于中国协和医科大学，是其临床医学院，同时也是中国医学科学院的临床医学研究所，中华人民共和国卫生部指定的诊治疑难重症的技术指导中心之一。北京协和医院在中国乃至世界皆享有盛名，是中国最早承担外宾医疗任务的单位，医院专门设立外宾和高干门诊部，开设专门的高干、外宾、特需病区，也是首批肿瘤多学科诊疗试点医院。', department: '重症医学科、风湿免疫科、基本外科、乳腺外科、妇产科、皮肤科、超声诊断科、病理科、放射科、呼吸科、肿瘤内科', imgSrc: './res/pic/1.png' , isshow: false, index: 0},
+                listTwo: [
+                    { name: '协和医院', value: '北京协和医院位于北京市东城区，是集医疗、科研、教学为一体的大型综合医院。隶属于中国协和医科大学，是其临床医学院，同时也是中国医学科学院的临床医学研究所，中华人民共和国卫生部指定的诊治疑难重症的技术指导中心之一。北京协和医院在中国乃至世界皆享有盛名，是中国最早承担外宾医疗任务的单位，医院专门设立外宾和高干门诊部，开设专门的高干、外宾、特需病区，也是首批肿瘤多学科诊疗试点医院。', department: '重症医学科、风湿免疫科、基本外科、乳腺外科、妇产科、皮肤科、超声诊断科、病理科、放射科、呼吸科、肿瘤内科', imgSrc: './res/pic/1.png', isshow: false, index: 0 },
+                    { name: '301医院', value: '中国人民解放军总医院（301医院）创建于1953年，是集医疗、保健、教学、科研于一体的大型现代化综合性医院。医院是中央重要保健基地，承担军委、总部等多个体系单位、官兵的医疗保健和各军区、军兵种转诊、后送的疑难病诊治任务。医院同时又是解放军医学院，以研究生教育为主，是全军唯一一所医院办学单位。', department: '肝胆外科、骨科、耳鼻喉、头颈外科、泌尿外科、内分泌科、消化内科、肾病科', imgSrc: './res/pic/2.jpg', isshow: false, index: 1 },
+                    { name: '北医三院', value: '北京大学第三医院（简称“北医三院”）始建于1958年，是国家卫生健康委委管的集医疗、教学、科研和预防保健为一体的现代化综合性三级甲等医院。北医三院拥有国内最强的脊柱外科和目前世界规模最大、治疗方法最全面的生殖医学中心之一。中国大陆首例试管婴儿在此诞生。运动医学研究所是中国最早成立、国内唯一的中国奥委会指定运动员伤病防治中心。眼科在眼外伤及眼科疑难重症的诊治方面处于国内领先水平；消化科在溃疡病发病机制研究及治疗、早期胃癌的诊疗等领域居国内前列；心血管内科在冠心病介入治疗、急性心肌梗死“绿色通道”及临床与基础协调发展等方面居国内一流水平。', department: '骨科（运动医学）、生殖内分泌科、泌尿外、男性学', imgSrc: './res/pic/3.jpg', isshow: false, index: 2 },
+                    { name: '朝阳医院', value: '首都医科大学附属北京朝阳医院有两个院区，本部位于北京市朝阳区工体南路8号，始建于1958年2月24日，是一所集医疗、教学、科研、预防为一体的三级甲等综合性医院，是北京市医保和新农合定点医院。医院设有心脏中心、呼吸科、内分泌科、肾内科、血液科、风湿免疫、神经内科、消化内科、综合科、高压氧科、感染科、肿瘤科、职业病与中毒医学科、普外科等。', department: '呼吸科', imgSrc: './res/pic/4.jpg', isshow: false, index: 3 },
+                    { name: '天坛医院', value: '首都医科大学附属北京天坛医院始建于1956年8月23日，是一所以神经外科为先导，以神经科学集群为特色，集医疗、教学、科研、预防为一体的三级甲等综合性医院，是北京市医保定点医院。医院设有神经外科（小儿病区、癫痫外科病区、功能神经外科病区、脊髓脊柱病区、颅脑创伤病区、脑血管病一病区、脑血管病二病区、肿瘤病区、神经肿瘤综合治疗病区、周围神经外科病区、国际医疗部综合医疗病区）、呼吸内科、消化内科、心内科、内分泌科、肾内科、血液内科、感染科、心外科、普外科、泌尿外科、骨外科、乳腺外科等。', department: '神经外科、功能外科（癫痫）、神经内科、神经放射科', imgSrc: './res/pic/5.jpg', isshow: false, index: 4 },
+                    { name: '中日友好医院', value: '中日友好医院是中华人民共和国国家卫生和计划生育委员会直属医院，于1984年开院。现编制床位1700张（含北区、西区），集医疗、教学、科研、康复和预防保健等多项功能为一体，并承担中央保健医疗康复任务、国家卫生应急救援队任务，同时还是国家卫生计生委远程医疗管理与培训中心。医院实行365天无假日门诊，是北京市A 类定点医疗机构。', department: '肝胆外科、肾病科，呼吸科', imgSrc: './res/pic/6.jpg', isshow: false, index: 5 },
+                    { name: '友谊医院', value: '首都医科大学附属北京友谊医院始建于1952年，原名为北京苏联红十字医院，是新中国成立后，在苏联政府和苏联红十字会援助下，由党和政府建立的第一所大型医院。毛泽东主席特别题词“减少人民的疾病，提高人民的健康水平”。目前，首都医科大学附属北京友谊医院是集医疗、教学、科研、预防和保健为一体的北京市属三级甲等综合医院，是首都医科大学第二临床医学院。医院设有西城院区和通州院区，其中通州院区位于北京城市副中心。', department: '消化内科、耳鼻喉头颈外科、热带病', imgSrc: './res/pic/7.jpg', isshow: false, index: 6 },
+                    { name: '北大肿瘤医院', value: '北京大学肿瘤医院（北京肿瘤医院、北京大学临床肿瘤学院、北京市肿瘤防治研究所）始建于1976年，是集医、教、研、防于一体的大型现代化三级甲等肿瘤专科医院。是国家肿瘤学重点学科，国家临床重点学科建设项目，肿瘤科、病理科国家临床重点专科建设项目单位；在多种中国常见肿瘤诊治方面居国内领先、国际先进水平；拥有教育部、北京市“恶性肿瘤发病机制及转化研究”重点实验室；是北京抗癌协会、北京癌症康复会的挂靠和依托单位。致力于乳腺癌、胃癌、肺癌、结直肠癌、肝癌、食管癌、恶性淋巴瘤、妇科肿瘤、头颈部肿瘤、骨肿瘤以及恶性黑色素瘤等各种肿瘤的诊断和综合治疗。', department: '肿瘤非手术治疗科，胸外科', imgSrc: './res/pic/8.jpg', isshow: false, index: 7 },
+                    { name: '宣武医院', value: '首都医科大学宣武医院创建于1958年，是一所以神经科学和老年医学的临床与研究为重点，以治疗心脑血管疾患为特色，承担医疗、教育、科研、预防、保健和康复任务的大型三级甲等综合医院。是新中国神经科学的初创基地和培育神经科学人才的摇篮之一,在国内有着重要学术地位。受国家卫生部委托，医院承办全国神经内科医师进修班、神经外科医师进修班、神经放射医师进修班，是国家级继续医学教育培训基地。', department: '神经内科', imgSrc: './res/pic/9.jpg', isshow: false, index: 8 },
+                    { name: '同仁医院', value: '首都医科大学附属北京同仁医院有3个院区，分别位于北京市东城区东交民巷1号、崇文门内大街8号、经济技术开发区西环南路2号，始建于1886年，是一所以眼科学、耳鼻咽喉科学为国家重点学科的三级综合医院，是北京市医保定点医院。', department: '眼科全类别', imgSrc: './res/pic/10.jpg', isshow: false, index: 9 },
+                    { name: '阜外医院', value: '中国医学科学院阜外心血管病医院（以下简称阜外医院），始建于1956年，是国内一家三级甲等心血管病专科医院，也是心血管疾病国家重点实验室、国家心血管疾病临床医学研究中心所在地，以诊治各种复杂、疑难和重症心血管疾病而享誉国内外，已成为世界上最大的心血管疾病诊治中心和集医疗、科研、预防和人才培养于一体的国家级医学研究与教育中心。', department: '心脏科', imgSrc: './res/pic/11.jpg', isshow: false, index: 10 },
+                    { name: '积水潭医院', value: '北京积水潭医院有2个院区，分别位于北京市西城区新街口东街31号，北京市昌平区回龙观回南北路68号，始建于1956年1月28日，是一所综合医院。北京积水潭医院以显著的医疗特色和医、教、研、防综合实力成为北京大学第四临床医学院。其脊柱外科、创伤骨科、矫形骨科、手外科、小儿骨科、骨肿瘤科、运动医学科和烧伤科的医疗技术达到世界及国内领先水平。医院设有北京市创伤骨科研究所、北京市烧伤研究所、北京市手外科研究所、北京创伤烧伤抢救中心、北京市骨科疾病研究治疗中心。北京市医保定点医院。', department: '骨科全类别', imgSrc: './res/pic/12.jpg', isshow: false, index: 11 },
+                    { name: '儿童医院', value: '首都医科大学附属北京儿童医院是集医疗、科研、教学、保健于一体的三级甲等综合性儿科医院。年门诊量300余万人次，住院病人7万余人次，手术逾2.3万例。2017年，国家卫生计生委批准北京儿童医院成为国家儿童医学中心(北京)。北京儿童医院设备先进、设施完善、技术力量雄厚，科室齐全，设有呼吸科、泌尿外科、重症医学科、血液肿瘤中心等44个临床和医技科室。', department: '儿科综合', imgSrc: './res/pic/13.jpg', isshow: false, index: 12 },
+                    { name: '儿研所', value: '首都儿科研究所是一所以医学基础研究、儿科疾病发病机理研究、儿童保健为重点，承担有医疗、教学和预防任务的应用医学研究机构。研究所先后10次获得北京市属科研院所“改革与发展”一等奖，18次获得首都及卫生系统“文明单位”的称号。50多年来，经过几代人的不懈奋斗，研究所已发展成为集儿科基础医学、临床医学、高等医学教育、预防保健医学为一体的全国知名的医学研究机构。', department: '儿科综合', imgSrc: './res/pic/14.jpg', isshow: false, index: 13 },
+                    { name: '广安门中医院', value: '中国中医科学院广安门医院(暨中国中医科学院第二临床医药研究所)始建于1955年，是国家中医药管理局直属的集医疗、教学、科研和预防保健为一体的三级甲等中医医院，是中央干部保健基地，全国“示范中医医院”，北京市医疗保险A类定点医院，国家中医药管理局批准的全国中医肿瘤医疗中心，全国中医尿病专病及中医肛肠病专病中心，中医急诊基地建设单位，国家中医药管理局中医药重点学科（中医肿瘤病学、中医内分泌病学、中医肛肠病学、中医心病学、中医心理学、中医痹病学）及肿瘤扶正培本重点研究室建设单位。', department: '中医全科', imgSrc: './res/pic/15.jpg', isshow: false, index: 14 },
+                    { name: '北京中医院', value: '北京中医医院始建于1956年，是北京市唯一的一所市属综合性、现代化三级甲等中医医院。承担着北京市中医医疗、教学、科研、预防等任务。医院下设北京市中医研究所、北京市中药研究所、北京市中医国际交流培训中心、北京市赵炳南皮肤病研究中心等。是首都医科大学中医药临床医学院、北京中医药大学教学医院、北京市中医住院医师（全科医生）规范化培训基地。北京市基本医疗保险A类定点医疗机构。', department: '中医全科', imgSrc: './res/pic/16.jpg', isshow: false, index: 15 },
+                ],
+            },
+            methods:{
+                changeItem(i){
+                    this.itemThis = i;
+                },
+                tapthis(item){
+                    this.listOne = [];
+                    this.listOne = JSON.parse(JSON.stringify(this.listTwo));
+                    this.listOne[item.index].isshow = true;
+                }
+            },
+            mounted() {
+                const that = this
+                window.onresize = () => {
+                    return (() => {
+                        if ($(window).width() < 992) {
+                            $('.ins h3').css("margin-left", -$('.ins h3').innerWidth() / 2)
+                            $('.items h3').css("margin-left", -$('.items h3').innerWidth() / 2)
+                        }
+                    })()
+                }
+            }
+        })
+        
+        if ($(window).width() < 992) {
+            $('.ins h3').css("margin-left", -$('.ins h3').innerWidth() / 2)
+            $('.items h3').css("margin-left", -$('.items h3').innerWidth() / 2)
+        }
+       
+    </script>
+</body>
+</html>
